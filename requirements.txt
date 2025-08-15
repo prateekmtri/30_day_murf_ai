@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-dotenv
+jinja2
+pydantic
+assemblyai
+murf
+google-generativeai

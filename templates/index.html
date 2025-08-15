@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voice Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="/static/main.js" defer></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        #output, #uploadStatus, #echoV2Status, #llmBotStatus {
+            font-size: 1.25rem;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0d6efd;
+            word-wrap: break-word;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #0d6efd;
+        }
+
+        button {
+            background: linear-gradient(45deg, #0d6efd, #6610f2);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-right: 1rem;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        #audioPlayer, #echoAudio, #echoV2Audio, #llmBotAudio {
+            width: 100%;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .loading {
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .error {
+            color: #dc3545;
+            background-color: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎙️ Voice Agent</h1>
+    
+    <div class="container">
+        <h1>🤖 Full AI Voice Bot</h1>
+        <p>Ask a question and get a voice response from the AI!</p>
+        <p id="llmBotStatus">Waiting for you to ask a question...</p>
+        <div style="margin-top: 1rem;">
+            <button id="startLLMRecordBtn">🎙️ Ask Question</button>
+            <button id="stopLLMRecordBtn" disabled>🛑 Stop Recording</button>
+        </div>
+        <audio id="llmBotAudio" controls>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="container">
+        <p id="output">Waiting for your input...</p>
+        <div class="form-group">
+            <label for="textInput">Enter text to convert to speech:</label>
+            <input type="text" id="textInput" placeholder="Type your message here..." />
+        </div>
+        <button id="generateBtn">🎵 Generate Speech</button>
+        <audio id="audioPlayer" controls>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="container">
+        <h1>🗣️ Echo Bot v1</h1>
+        <p>Record your voice and see the transcription!</p>
+        <p id="uploadStatus">Waiting for recording...</p>
+        <p id="transcription">Transcription will appear here...</p>
+        <div style="margin-top: 1rem;">
+            <button id="startRecordingBtn">🎙️ Start Recording</button>
+            <button id="stopRecordingBtn" disabled>🛑 Stop Recording</button>
+        </div>
+        <audio id="echoAudio" controls>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <div class="container">
+        <h1>🗣️ Echo Bot v2</h1>
+        <p>Record your voice and hear it back in a Murf voice!</p>
+        <p id="echoV2Status">Waiting for recording...</p>
+        <div style="margin-top: 1rem;">
+            <button id="startRecordingV2Btn">🎙️ Start Recording</button>
+            <button id="stopRecordingV2Btn" disabled>🛑 Stop Recording</button>
+        </div>
+        <audio id="echoV2Audio" controls>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</body>
+</html>
