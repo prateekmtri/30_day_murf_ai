@@ -277,8 +277,8 @@ This project has a solid foundation, but there's always room for improvement:
 
 ## 👤 Author & Acknowledgments
 
--   **[Yahan Apna Naam Likhein]**
--   **LinkedIn:** [Aapke LinkedIn Profile Ka Link]
--   **GitHub:** [Aapke GitHub Profile Ka Link]
+-   **Prateek Mani Tripathi**
+-   **LinkedIn:** https://www.linkedin.com/in/prateekmtri/
+-   **GitHub:** prateekmtri
 
 This project was built as part of the **#30DaysOfAIVoiceAgents** challenge. A big thank you to the organizers and the community for their support and inspiration.
